@@ -74,7 +74,6 @@
         </nav>
     </header>
     <main>
-
     </main>
     <aside></aside>
     <footer>
