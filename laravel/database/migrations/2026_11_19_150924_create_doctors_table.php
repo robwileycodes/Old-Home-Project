@@ -1,56 +1,26 @@
 <?php
 
-namespace Database\Seeders;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
-class DefaultAccountsSeeder extends Seeder
+return new class extends Migration
 {
-    public function run(): void
+    public function up(): void
     {
-        DB::table('healthcare_users')->insert([
-            [
-                'first_name' => 'Admin',
-                'last_name' => 'User',
-                'email' => 'admin@test.com',
-                'password' => Hash::make('password'),
-                'role' => 'admin',
-                'approval_status' => 'approved',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'first_name' => 'Doctor',
-                'last_name' => 'User',
-                'email' => 'doctor@test.com',
-                'password' => Hash::make('password'),
-                'role' => 'doctor',
-                'approval_status' => 'approved',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'first_name' => 'Caregiver',
-                'last_name' => 'User',
-                'email' => 'caregiver@test.com',
-                'password' => Hash::make('password'),
-                'role' => 'caregiver',
-                'approval_status' => 'approved',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'first_name' => 'Patient',
-                'last_name' => 'User',
-                'email' => 'patient@test.com',
-                'password' => Hash::make('password'),
-                'role' => 'patient',
-                'approval_status' => 'approved',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('specialty')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->timestamps();
+        });
     }
-}
+
+    public function down(): void
+    {
+        Schema::dropIfExists('doctors');
+    }
+};
