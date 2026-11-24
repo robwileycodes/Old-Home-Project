@@ -13,7 +13,7 @@ return new class extends Migration
 
             // Patient relationship
             $table->foreignId('patient_id')
-                  ->constrained()
+                  ->constrained('healthcare_users')
                   ->onDelete('cascade');
 
             // Doctor relationship
