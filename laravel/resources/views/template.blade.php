@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Template</title>
 </head>
 <body>
     <header>
+        <div class="header-links">
+            <div class="logged-out-links">
+                <ul>
+                    <li><a href="#" class="guest-only">Log in</a></li>
+                    <li><a href="#" class="guest-only">Register</a></li>
+                </ul>
+            </div>
+            <div class="logged-in-link">
+                <a href="#" class="auth-only">Log out</a>
+            </div>
+        </div>
         <img src="{{ asset('header-logo.png') }}" alt="header-logo">
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Roster</a></li>
+                @auth
+                    <li><a href="{{ route('roster.index') }}">Roster</a></li>
+                @endauth
                 <li>
                     <p>Admin Links</p>
                     <ul>
@@ -62,22 +74,14 @@
                     <li><a href="#" class="role-family">Family Member's Home</a></li>
                 </div>
             </ul>
-            <div class="logged-out-links">
-                <ul>
-                    <li><a href="#" class="guest-only">Log in</a></li>
-                    <li><a href="#" class="guest-only">Register</a></li>
-                </ul>
-            </div>
-            <div class="logged-in-link">
-                <a href="#" class="auth-only">Log out</a>
-            </div>
         </nav>
     </header>
     <main>
+        @yield('content')
     </main>
     <aside></aside>
     <footer>
-        <p>Copyright 2026. All Rights Reserved.</p>
+        <p>© Copyright 2026. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
