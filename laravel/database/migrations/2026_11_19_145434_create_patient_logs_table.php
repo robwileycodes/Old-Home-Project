@@ -16,8 +16,8 @@ return new class extends Migration
 
             // Patient relationship
             $table->foreignId('patient_id')
-                  ->constrained()
-                  ->onDelete('cascade');
+                ->constrained('healthcare_users')
+                ->onDelete('cascade');
 
             // Log date
             $table->date('log_date');

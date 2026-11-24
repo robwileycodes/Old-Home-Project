@@ -13,8 +13,8 @@ return new class extends Migration
 
             // Patient relationship
             $table->foreignId('patient_id')
-                  ->constrained()
-                  ->onDelete('cascade');
+                ->constrained('healthcare_users')
+                ->onDelete('cascade');
 
             // Appointment information
             $table->string('appointment_link')->nullable();
