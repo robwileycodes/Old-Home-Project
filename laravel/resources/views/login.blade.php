@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('login.submit') }}">
+    <form method="POST" action="{{ route('login.submit') }}" class="login-form">
         @csrf
 
         <div>

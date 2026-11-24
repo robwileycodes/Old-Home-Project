@@ -29,6 +29,10 @@ a, p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h1 {
+    font-size: 1.75em;
+}
+
 /* header and nav */
 header {
     position: relative;
@@ -103,6 +107,8 @@ nav li.open > ul li {
 main {
     margin: 40px 20px;
 }
+
+
 
 /* footer */
 
